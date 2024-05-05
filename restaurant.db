@@ -1,0 +1,31 @@
+CREATE TABLE MenuItems(
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    price REAL NOT NULL,
+    description TEXT,
+    category TEXT
+);
+
+CREATE TABLE Orders(
+    id INTEGER PRIMARY KEY,
+    customer_name TEXT NOT NULL,
+    total_amount REAL NOT NULL,
+    status TEXT,
+);
+
+CREATE TABLE OrderItems(
+    id  INTEGER NOT NULL,
+    order_id INTEGER,
+    menu_item_id INTEGER,
+    customization TEXT,
+    FOREIGN KEY (order_id) REFERENCES Orders(id),
+    FOREIGN KEY (menu_item_id) REFERENCES MenuItems(id)
+);
+
+CREATE TABLE Ingredients(
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    quantity REAL NOT NULL,
+    unit TEXT
+);
+
